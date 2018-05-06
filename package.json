@@ -1,0 +1,27 @@
+{
+    "name": "where-to-eat",
+    "version": "2018.5.6",
+    "description": "The simple app for helping groups to decide where to eat",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "develop": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/debkbanerji/where-to-eat.git"
+    },
+    "author": "Deb Banerji",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/debkbanerji/where-to-eat/issues"
+    },
+    "homepage": "https://github.com/debkbanerji/where-to-eat#readme",
+    "devDependencies": {
+        "nodemon": "^1.17.4"
+    },
+    "dependencies": {
+        "express": "^4.16.3"
+    }
+}
