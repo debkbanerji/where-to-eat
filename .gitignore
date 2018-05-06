@@ -18,7 +18,7 @@ node_modules
 .idea
 
 # credentials
-credentials/yelp-credentials.json
+credentials/yelp-api-key.txt
 
 # package lock
 package-lock.json

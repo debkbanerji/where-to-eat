@@ -1,11 +1,90 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const request = require('request');
 
 console.log('Running api.js');
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
-    res.send('Hello from api')
+const BUSINESS_SEARCH_URL = 'https://api.yelp.com/v3/businesses/search';
+
+let fileAPIKey;
+const keyFilePath = path.join('credentials', 'yelp-api-key.txt');
+if (fs.existsSync(keyFilePath)) {
+    fileAPIKey = fs.readFileSync(keyFilePath, 'utf8');
+}
+
+const YELP_API_KEY = process.env.YELP_API_KEY || fileAPIKey;
+if (!YELP_API_KEY) {
+    const errorMessage = 'Could not find ' + keyFilePath + ' or YELP_API_KEY environment variable';
+    console.log(errorMessage);
+    throw new Error(errorMessage);
+}
+
+router.get('/nearby-places', function (req, res) {
+    const params = req.query;
+
+    if ((!params.location) && (!params.latitude || !params.longitude)) {
+        const errorMessage = 'You must specify either a location or a latitude and longitude to search.';
+        res.status(500).send(errorMessage);
+        // } else if (params.location && params.latitude && params.longitude) {
+        //     const errorMessage = 'You must cannot specify both a location and coordinates to search.';
+        //     res.status(500).send(errorMessage);
+    } else {
+        const requestOptions = {};
+        requestOptions.latitude = params.latitude;
+        requestOptions.longitude = params.longitude;
+        requestOptions.location = params.location;
+        requestOptions.radius = params.radius || 8000;
+        requestOptions.limit = params.limit || 50;
+        // Sort by best_match, rating, review_count or distance
+        requestOptions.sort_by = params.sort_by || 'distance';
+        requestOptions.open_now = params.open_now || true;
+        requestOptions.price = params.price || '1,2,3,4';
+        requestOptions.categories = params.categories || 'food';
+
+        if (params.term) {
+            requestOptions.term = params.term;
+            requestOptions.sort_by = params.sort_by || 'best_match';
+        }
+
+        const requestOptionsKeys = Object.keys(requestOptions);
+        const requestOptionsList = [];
+        for (let i = 0; i < requestOptionsKeys.length; i++) {
+            const key = requestOptionsKeys[i];
+            requestOptionsList.push(key + '=' + requestOptions[key]);
+        }
+        const targetURL = BUSINESS_SEARCH_URL + '?' + requestOptionsList.join('&');
+
+        if (process.env.USE_DEBUG_LOG) {
+            console.log(targetURL);
+        }
+
+        request.get({
+            url: targetURL,
+            headers: {'Authorization': 'Bearer ' + YELP_API_KEY},
+        }, function (error, yelpResponse, body) {
+            if (error) {
+                res.status(500).send(error.toString());
+            } else {
+                body = JSON.parse(body);
+
+                if (process.env.USE_DEBUG_LOG) {
+                    console.log(body);
+                }
+
+                const places = body['businesses'];
+                // TODO: Remove places with duplicate names?
+                // TODO: Shuffle results?
+                const searchCenter = body['region']['center'];
+                res.send({
+                    places: places,
+                    search_center: searchCenter
+                })
+            }
+        })
+    }
 });
 
 console.log('Exporting router');
