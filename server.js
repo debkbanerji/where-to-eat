@@ -15,9 +15,10 @@ const port = process.env.PORT || '3000';
 app.set('port', port);
 console.log("Node server running on port " + port);
 
-// Point static path to 'static' folder
-app.use(express.static(path.join(__dirname, 'static')));
-console.log("Serving static from 'static' folder");
+const frontendFolder = path.join(__dirname, 'static', 'where-to-eat', 'dist', 'where-to-eat');
+// Point static path to frontend folder
+app.use(express.static(frontendFolder));
+console.log("Serving static from " + frontendFolder + " folder");
 
 console.log("Using error logging");
 
@@ -28,7 +29,7 @@ console.log("Setting api routes");
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'static', 'index.html'));
+    res.sendFile(path.join(frontendFolder, 'index.html'));
 });
 
 console.log("Catching all other routes and returning the index file");
