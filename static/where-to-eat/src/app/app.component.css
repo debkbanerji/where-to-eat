@@ -1,0 +1,15 @@
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#search-card-container {
+    padding: 10px;
+}
+#search-container {
+    padding: 10px;
+}
+
+.full-width {
+    width: 100%;
+}

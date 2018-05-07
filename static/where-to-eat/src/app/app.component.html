@@ -1,8 +1,37 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-    <h1>
-        Welcome to {{ title }}!
-    </h1>
+<div class="row" *ngIf="pageState === 'beforeQuery'">
+    <div class="col-xs-12 full-width">
+        <div id="search-card-container">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Get Started</mat-card-title>
+                    <mat-card-subtitle>Enter your address or coordinates</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div id="search-container">
+                        <mat-form-field class="full-width">
+                            <input matInput [(ngModel)]="targetLocation" placeholder="Address">
+                        </mat-form-field>
+                        <!--<b>Or</b>-->
+                        <!--<br>-->
+                        <table class="full-width" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <mat-form-field class="full-width">
+                                        <input matInput [(ngModel)]="targetLatitude" placeholder="Latitude">
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field class="full-width">
+                                        <input matInput [(ngModel)]="targetLongitude" placeholder="Longitude">
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
 </div>
-
-
+<div class="row">
+</div>
