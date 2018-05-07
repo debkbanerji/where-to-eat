@@ -35,7 +35,6 @@ router.get('/nearby-places', function (req, res) {
         const requestOptions = {};
         requestOptions.latitude = params.latitude;
         requestOptions.longitude = params.longitude;
-        requestOptions.location = params.location;
         requestOptions.radius = params.radius || 8000;
         requestOptions.limit = params.limit || 30;
         // Sort by best_match, rating, review_count or distance
@@ -47,6 +46,10 @@ router.get('/nearby-places', function (req, res) {
         if (params.term) {
             requestOptions.term = params.term;
             requestOptions.sort_by = params.sort_by || 'best_match';
+        }
+
+        if (params.location) {
+            requestOptions.location = params.location;
         }
 
         const requestOptionsKeys = Object.keys(requestOptions);
