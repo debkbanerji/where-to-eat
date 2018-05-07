@@ -1,4 +1,4 @@
-<div class="row" *ngIf="pageState === 'beforeQuery'">
+<div class="row" *ngIf="pageState === 'beforeSearch'">
     <div class="col-xs-12 full-width">
         <div id="search-card-container">
             <mat-card>
@@ -31,7 +31,7 @@
                         </table>
                         <span>
                             <small
-                                *ngIf="(targetLocation == null || targetLocation === '')
+                                    *ngIf="(targetLocation == null || targetLocation === '')
                                     && (!targetLatitude || !targetLongitude)">
                                     Enter your address or coordinates to continue
                             </small>
@@ -46,7 +46,8 @@
                                     && (!targetLatitude || !targetLongitude)) &&
                             !((targetLatitude != null && targetLongitude != null)
                              && (abs(targetLatitude) > 90 || abs(targetLongitude) > 90)))"
-                                    mat-raised-button color="accent">
+                                    mat-raised-button color="accent"
+                                    (click)="doSeearch()">
                                 Start
                             </button>
                         </span>
@@ -56,5 +57,19 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="pageState === 'loading'">
+    <div class="col-xs-12 full-width">
+        <div id="loading-card-container">
+            <mat-card>
+                <mat-card-content id="loading-spinner-container">
+                    <mat-spinner id="loading-spinner"></mat-spinner>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="pageState === 'afterSearch'">
+    <div class="col-xs-12 full-width">
+        TODO: Implement
+    </div>
 </div>

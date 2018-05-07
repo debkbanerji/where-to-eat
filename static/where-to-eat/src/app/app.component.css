@@ -3,7 +3,7 @@
     margin-right: 0;
 }
 
-#search-card-container {
+#search-card-container, #loading-card-container {
     padding: 10px;
 }
 #search-container {
@@ -16,4 +16,12 @@
 
 .error-text {
     color: #DC3545;
+}
+
+#loading-spinner-container {
+    text-align: center;
+}
+
+#loading-spinner {
+    margin: auto;
 }

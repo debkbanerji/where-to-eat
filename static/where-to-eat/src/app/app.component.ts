@@ -6,11 +6,13 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    public pageState: string = 'beforeQuery';
+    public pageState: string = 'beforeSearch';
 
     public targetLatitude: number;
     public targetLongitude: number;
     public targetLocation: string;
+
+    private API_ADDRESS = '/api/nearby-places';
 
     ngOnInit(): void {
         this.setCoordinatesToProvided();
@@ -30,5 +32,10 @@ export class AppComponent implements OnInit {
 
     public abs(num: number) {
         return Math.abs(num);
+    }
+
+    public doSeearch() {
+        const component = this;
+        component.pageState = 'loading'
     }
 }
