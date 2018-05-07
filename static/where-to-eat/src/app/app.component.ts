@@ -1,12 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs/index";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+    private routeParameterSubscription: Subscription;
+
     public pageState: string = 'beforeSearch';
     public httpErrorMessage: string;
 
@@ -16,14 +20,27 @@ export class AppComponent implements OnInit {
 
     private API_ADDRESS = '/api/nearby-places';
 
-    constructor(private http: HttpClient) {
+    // private API_ADDRESS = 'https://where-2-eat.herokuapp.com//api/nearby-places';
+
+    constructor(private http: HttpClient, private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
-        this.setCoordinatesToProvided();
+        const component = this;
+        this.routeParameterSubscription = this.route.queryParams.subscribe(params => {
+            console.log(params);
+            if (+params['latitude'] && +params['longitude']) {
+                component.targetLatitude = +params['latitude'];
+                component.targetLongitude = +params['longitude'];
+            }
+            if (params['location']) {
+                component.targetLocation = params['location'];
+            }
+            component.setCoordinatesToRequested();
+        });
     }
 
-    private setCoordinatesToProvided(): void {
+    public setCoordinatesToRequested(): void {
         const component = this;
         navigator.geolocation.getCurrentPosition(function (providedLocation) {
             const providedCoordinates = providedLocation.coords;
@@ -74,5 +91,9 @@ export class AppComponent implements OnInit {
             component.httpErrorMessage = error.message;
             this.pageState = 'beforeSearch';
         }));
+    }
+
+    ngOnDestroy(): void {
+        this.routeParameterSubscription.unsubscribe();
     }
 }

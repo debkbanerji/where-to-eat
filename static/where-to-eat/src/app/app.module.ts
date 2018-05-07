@@ -6,12 +6,14 @@ import {MatButtonModule, MatCardModule, MatInputModule, MatProgressSpinnerModule
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
     declarations: [
         AppComponent
     ],
     imports: [
+        RouterModule.forRoot([]),
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
