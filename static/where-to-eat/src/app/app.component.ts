@@ -27,4 +27,8 @@ export class AppComponent implements OnInit {
             // Do nothing - user must enter location manually
         });
     }
+
+    public abs(num: number) {
+        return Math.abs(num);
+    }
 }

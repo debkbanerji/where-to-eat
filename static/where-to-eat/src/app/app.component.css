@@ -13,3 +13,7 @@
 .full-width {
     width: 100%;
 }
+
+.error-text {
+    color: #DC3545;
+}

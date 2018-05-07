@@ -11,22 +11,45 @@
                         <mat-form-field class="full-width">
                             <input matInput [(ngModel)]="targetLocation" placeholder="Address">
                         </mat-form-field>
-                        <!--<b>Or</b>-->
-                        <!--<br>-->
                         <table class="full-width" cellspacing="0">
                             <tr>
                                 <td>
                                     <mat-form-field class="full-width">
-                                        <input matInput [(ngModel)]="targetLatitude" placeholder="Latitude">
+                                        <input matInput type="number"
+                                               [(ngModel)]="targetLatitude"
+                                               placeholder="Latitude">
                                     </mat-form-field>
                                 </td>
                                 <td>
                                     <mat-form-field class="full-width">
-                                        <input matInput [(ngModel)]="targetLongitude" placeholder="Longitude">
+                                        <input matInput type="number"
+                                               [(ngModel)]="targetLongitude"
+                                               placeholder="Longitude">
                                     </mat-form-field>
                                 </td>
                             </tr>
                         </table>
+                        <span>
+                            <small
+                                *ngIf="(targetLocation == null || targetLocation === '')
+                                    && (!targetLatitude || !targetLongitude)">
+                                    Enter your address or coordinates to continue
+                            </small>
+                            <small class="error-text" *ngIf="
+                            !((targetLocation == null || targetLocation === '')
+                                && (!targetLatitude || !targetLongitude)) &&
+                            ((targetLatitude != null && targetLongitude != null)
+                         && (abs(targetLatitude) > 90 || abs(targetLongitude) > 90))">
+                                Your coordinates seem to be invalid
+                            </small>
+                            <button *ngIf="(!((targetLocation == null || targetLocation === '')
+                                    && (!targetLatitude || !targetLongitude)) &&
+                            !((targetLatitude != null && targetLongitude != null)
+                             && (abs(targetLatitude) > 90 || abs(targetLongitude) > 90)))"
+                                    mat-raised-button color="accent">
+                                Start
+                            </button>
+                        </span>
                     </div>
                 </mat-card-content>
             </mat-card>
