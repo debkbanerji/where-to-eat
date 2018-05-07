@@ -22,6 +22,15 @@ if (!YELP_API_KEY) {
     throw new Error(errorMessage);
 }
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
 router.get('/nearby-places', function (req, res) {
     const params = req.query;
 
@@ -45,7 +54,7 @@ router.get('/nearby-places', function (req, res) {
 
         if (params.term) {
             requestOptions.term = params.term;
-            requestOptions.sort_by = params.sort_by || 'best_match';
+            // requestOptions.sort_by = params.sort_by || 'best_match';
         }
 
         if (params.location) {
@@ -77,9 +86,22 @@ router.get('/nearby-places', function (req, res) {
                     console.log(body);
                 }
 
-                const places = body['businesses'];
-                // TODO: Remove places with duplicate names?
-                // TODO: Shuffle results?
+                const allPlaces = body['businesses'];
+
+                //Remove duplicates
+                const placeNames = [];
+                const places = [];
+
+                for (let i =0; i < allPlaces.length; i++) {
+                    const placeName = allPlaces[i].name;
+                    if (placeNames.indexOf(placeName) < 0) {
+                        placeNames.push(placeName);
+                        places.push(allPlaces[i]);
+                    }
+                }
+
+                shuffleArray(places);
+
                 const searchCenter = body['region']['center'];
                 res.send({
                     places: places,
