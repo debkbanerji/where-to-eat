@@ -42,13 +42,13 @@
                             !((targetLocation == null || targetLocation === '')
                                 && (!targetLatitude || !targetLongitude)) &&
                             ((targetLatitude != null && targetLongitude != null)
-                         && (abs(targetLatitude) > 90 || abs(targetLongitude) > 90))">
+                         && (abs(targetLatitude) > 90 || abs(targetLongitude) > 180))">
                                 Your coordinates seem to be invalid
                             </small>
                             <button *ngIf="(!((targetLocation == null || targetLocation === '')
                                     && (!targetLatitude || !targetLongitude)) &&
                             !((targetLatitude != null && targetLongitude != null)
-                             && (abs(targetLatitude) > 90 || abs(targetLongitude) > 90)))"
+                             && (abs(targetLatitude) > 90 || abs(targetLongitude) > 180)))"
                                     mat-raised-button color="accent"
                                     (click)="doSeearch()">
                                 Start

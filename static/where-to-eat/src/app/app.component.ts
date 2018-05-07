@@ -43,7 +43,16 @@ export class AppComponent implements OnInit {
         const component = this;
         component.pageState = 'loading';
 
-        const requestParams = {};
+        let requestParams = {};
+
+        if (component.targetLocation && component.targetLocation != '') {
+            requestParams['location'] = component.targetLocation;
+        }
+
+        if (component.targetLatitude != null && component.targetLongitude != null) {
+            requestParams['latitude'] = component.targetLatitude;
+            requestParams['longitude'] = component.targetLongitude;
+        }
 
         const requestParamsKeys = Object.keys(requestParams);
         const requestParamsList = [];
