@@ -18,7 +18,7 @@ console.log("Node server running on port " + port);
 const frontendFolder = path.join(__dirname, 'static', 'where-to-eat', 'dist', 'where-to-eat');
 // Point static path to frontend folder
 app.use(express.static(frontendFolder));
-console.log("Serving static from " + frontendFolder + " folder");
+console.log("Serving static from " + frontendFolder);
 
 console.log("Using error logging");
 
