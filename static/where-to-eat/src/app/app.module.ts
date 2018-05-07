@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {MatButtonModule, MatCardModule, MatInputModule, MatProgressSpinnerModule} from "@angular/material";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         FormsModule,
         MatCardModule,
         MatInputModule,
