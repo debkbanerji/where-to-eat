@@ -31,8 +31,33 @@
     <!--Angular Material icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0 0 100px;
+        }
+
+        footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding-bottom: 10px;
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
+
 </head>
 <body>
 <app-root></app-root>
 </body>
+<footer style="text-align: center">
+    <small>Search powered by <a href="https://www.yelp.com" target="_blank" style="color: #333333">
+        Yelp</a>
+    </small>
+</footer>
 </html>
