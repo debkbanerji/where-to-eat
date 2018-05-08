@@ -87,13 +87,17 @@
     </div>
 </div>
 <div class="row" *ngIf="pageState === 'afterSearch'">
-    <div  id="instruction-card-column" class="col-xs-12 full-width">
+    <div id="instruction-card-column" class="col-xs-12 full-width">
         <div id="instruction-card-container">
             <mat-card>
                 <mat-card-content>
                     <span>Remove your <b>{{numToRemove}}</b> least favorite places</span>
                     <br>
-                    <span id="search-location">Searching from {{searchLatitude}}, {{searchLongitude}}</span>
+                    <a id="search-location"
+                       href="https://maps.google.com/?ll={{searchLatitude}},{{searchLongitude}}"
+                          target="_blank">
+                                            <span class="glyphicon glyphicon-map-marker"></span>
+                        Searching from {{searchLatitude}}, {{searchLongitude}}</a>
                 </mat-card-content>
             </mat-card>
         </div>
