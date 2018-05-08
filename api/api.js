@@ -42,7 +42,7 @@ router.get('/nearby-places', function (req, res) {
         //     res.status(500).send(errorMessage);
     } else {
         const requestOptions = {};
-        if (requestOptions.latitude && requestOptions.longitude) {
+        if (params.latitude && params.longitude) {
             requestOptions.latitude = params.latitude;
             requestOptions.longitude = params.longitude;
         }

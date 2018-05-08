@@ -13,6 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     public pageState: string = 'beforeSearch';
     public httpErrorMessage: string;
+    public noPlacesFound: boolean = false;
 
     public targetLatitude: number;
     public targetLongitude: number;
@@ -25,8 +26,9 @@ export class AppComponent implements OnInit, OnDestroy {
     public removedPlaces: any;
     public numToRemove: number;
 
-    private API_ADDRESS = '/api/nearby-places';
+    // private API_ADDRESS = '/api/nearby-places';
     // private API_ADDRESS = 'https://wheretoeat.debkbanerji.com/api/nearby-places';
+    private API_ADDRESS = 'http://localhost:3000/api/nearby-places';
 
     constructor(private http: HttpClient, private route: ActivatedRoute) {
     }
@@ -62,8 +64,9 @@ export class AppComponent implements OnInit, OnDestroy {
         return Math.abs(num);
     }
 
-    public doSeearch() {
+    public doSearch() {
         const component = this;
+        component.noPlacesFound = false;
         component.pageState = 'loading';
 
         let requestParams = {};
@@ -91,17 +94,25 @@ export class AppComponent implements OnInit, OnDestroy {
         this.http.get(targetAddress).subscribe(response => {
             console.log('response', response);
 
-            component.searchLatitude = response['search_center']['latitude'];
-            component.searchLongitude = response['search_center']['longitude'];
-            component.unremovedPlaces = response['places'];
-            component.removedPlaces = [];
-            component.numToRemove = Math.floor(component.unremovedPlaces.length / 2);
+            if (response['places'] && response['places'].length > 0) {
 
-            component.httpErrorMessage = null;
-            this.pageState = 'afterSearch';
+                component.searchLatitude = response['search_center']['latitude'];
+                component.searchLongitude = response['search_center']['longitude'];
+                component.unremovedPlaces = response['places'];
+                component.removedPlaces = [];
+                component.numToRemove = Math.floor(component.unremovedPlaces.length / 2);
+
+                component.httpErrorMessage = null;
+                component.noPlacesFound = false;
+                component.pageState = 'afterSearch';
+            } else {
+                component.noPlacesFound = true;
+                component.pageState = 'beforeSearch';
+            }
         }, (error => {
             console.log('Error connecting to API', error);
             component.httpErrorMessage = error.message;
+            component.noPlacesFound = false;
             this.pageState = 'beforeSearch';
         }));
     }

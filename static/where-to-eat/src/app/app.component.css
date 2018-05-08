@@ -28,6 +28,15 @@
     font-size: 12px;
 }
 
+.place-header {
+    /*display: inline;*/
+}
+
+.remove-place-button {
+    position: relative;
+    float: right;
+}
+
 .place-name {
     vertical-align: central;
 }

@@ -11,6 +11,9 @@
                         <small class="error-text" *ngIf="httpErrorMessage">
                             Unable to reach the server. Please try again later.
                         </small>
+                        <p *ngIf="noPlacesFound">
+                            We couldn't find any places near you
+                        </p>
                         <mat-form-field class="full-width">
                             <input matInput [(ngModel)]="targetLocation" placeholder="Address">
                             <button mat-button *ngIf="targetLocation" matSuffix mat-icon-button
@@ -62,7 +65,7 @@
                             !((targetLatitude != null && targetLongitude != null)
                              && (abs(targetLatitude) > 90 || abs(targetLongitude) > 180)))"
                                     mat-raised-button color="accent"
-                                    (click)="doSeearch()">
+                                    (click)="doSearch()">
                                 Start
                             </button>
                         </span>
@@ -97,7 +100,7 @@
     </div>
     <div class="col-xs-12 col-md-6 col-lg-4 unremoved-place-column" *ngFor="let place of unremovedPlaces">
         <mat-card>
-            <mat-card-header>
+            <mat-card-header class="place-header">
                 <img mat-card-avatar class="place-thumbnail" src="{{place.image_url}}">
                 <mat-card-title class="place-name">{{place.name}}</mat-card-title>
                 <mat-card-subtitle>
@@ -107,6 +110,9 @@
                     </span>
                     <span class="place-distance">{{(place.distance / 1000).toFixed(1)}} km</span>
                 </mat-card-subtitle>
+                <button mat-fab color="warn" class="remove-place-button">
+                    <mat-icon aria-label="Remove Place">close</mat-icon>
+                </button>
             </mat-card-header>
             <mat-card-content>
                 <span class="place-address">{{getAddressString(place.location)}}</span>
