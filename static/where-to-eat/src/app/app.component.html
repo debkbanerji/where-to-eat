@@ -13,6 +13,10 @@
                         </small>
                         <mat-form-field class="full-width">
                             <input matInput [(ngModel)]="targetLocation" placeholder="Address">
+                            <button mat-button *ngIf="targetLocation" matSuffix mat-icon-button
+                                    aria-label="Clear" (click)="targetLocation=null;">
+                                <mat-icon>close</mat-icon>
+                            </button>
                         </mat-form-field>
                         <table cellspacing="0">
                             <tr>
@@ -21,6 +25,10 @@
                                         <input matInput type="number"
                                                [(ngModel)]="targetLatitude"
                                                placeholder="Latitude">
+                                        <button mat-button *ngIf="targetLatitude" matSuffix mat-icon-button
+                                                aria-label="Clear" (click)="targetLatitude=null; targetLongitude=null">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
                                     </mat-form-field>
                                 </td>
                                 <td>
@@ -28,6 +36,10 @@
                                         <input matInput type="number"
                                                [(ngModel)]="targetLongitude"
                                                placeholder="Longitude">
+                                        <button mat-button *ngIf="targetLongitude" matSuffix mat-icon-button
+                                                aria-label="Clear" (click)="targetLatitude=null; targetLongitude=null">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
                                     </mat-form-field>
                                 </td>
                             </tr>
