@@ -7,6 +7,10 @@
     padding: 10px;
 }
 
+.coordinates-input {
+    width: 90%;
+}
+
 .full-width {
     width: 100%;
 }

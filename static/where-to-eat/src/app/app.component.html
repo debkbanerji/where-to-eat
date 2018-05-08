@@ -21,32 +21,62 @@
                                 <mat-icon>close</mat-icon>
                             </button>
                         </mat-form-field>
-                        <table cellspacing="0">
-                            <tr>
-                                <td>
-                                    <mat-form-field>
-                                        <input matInput type="number"
-                                               [(ngModel)]="targetLatitude"
-                                               placeholder="Latitude">
-                                        <button mat-button *ngIf="targetLatitude" matSuffix mat-icon-button
-                                                aria-label="Clear" (click)="targetLatitude=null; targetLongitude=null">
-                                            <mat-icon>close</mat-icon>
-                                        </button>
-                                    </mat-form-field>
-                                </td>
-                                <td>
-                                    <mat-form-field>
-                                        <input matInput type="number"
-                                               [(ngModel)]="targetLongitude"
-                                               placeholder="Longitude">
-                                        <button mat-button *ngIf="targetLongitude" matSuffix mat-icon-button
-                                                aria-label="Clear" (click)="targetLatitude=null; targetLongitude=null">
-                                            <mat-icon>close</mat-icon>
-                                        </button>
-                                    </mat-form-field>
-                                </td>
-                            </tr>
-                        </table>
+                        <!--<div id="coordinates-container">-->
+                            <!--<table id="coordinates-table" cellspacing="0">-->
+                                <!--<tr>-->
+                                    <!--<td>-->
+                                        <!--<mat-form-field>-->
+                                            <!--<input matInput type="number"-->
+                                                   <!--[(ngModel)]="targetLatitude"-->
+                                                   <!--placeholder="Latitude">-->
+                                            <!--<button mat-button *ngIf="targetLatitude" matSuffix mat-icon-button-->
+                                                    <!--aria-label="Clear"-->
+                                                    <!--(click)="targetLatitude=null; targetLongitude=null">-->
+                                                <!--<mat-icon>close</mat-icon>-->
+                                            <!--</button>-->
+                                        <!--</mat-form-field>-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<mat-form-field class="">-->
+                                            <!--<input matInput type="number"-->
+                                                   <!--[(ngModel)]="targetLongitude"-->
+                                                   <!--placeholder="Longitude">-->
+                                            <!--<button mat-button *ngIf="targetLongitude" matSuffix mat-icon-button-->
+                                                    <!--aria-label="Clear"-->
+                                                    <!--(click)="targetLatitude=null; targetLongitude=null">-->
+                                                <!--<mat-icon>close</mat-icon>-->
+                                            <!--</button>-->
+                                        <!--</mat-form-field>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+                        <!--</div>-->
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <mat-form-field class="coordinates-input">
+                                    <input matInput type="number"
+                                           [(ngModel)]="targetLatitude"
+                                           placeholder="Latitude">
+                                    <button mat-button *ngIf="targetLatitude" matSuffix mat-icon-button
+                                            aria-label="Clear"
+                                            (click)="targetLatitude=null; targetLongitude=null">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-xs-6">
+                                <mat-form-field class="coordinates-input">
+                                    <input matInput type="number"
+                                           [(ngModel)]="targetLongitude"
+                                           placeholder="Longitude">
+                                    <button mat-button *ngIf="targetLongitude" matSuffix mat-icon-button
+                                            aria-label="Clear"
+                                            (click)="targetLatitude=null; targetLongitude=null">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
                         <span>
                             <small
                                     *ngIf="(targetLocation == null || targetLocation === '')
