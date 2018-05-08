@@ -21,36 +21,6 @@
                                 <mat-icon>close</mat-icon>
                             </button>
                         </mat-form-field>
-                        <!--<div id="coordinates-container">-->
-                            <!--<table id="coordinates-table" cellspacing="0">-->
-                                <!--<tr>-->
-                                    <!--<td>-->
-                                        <!--<mat-form-field>-->
-                                            <!--<input matInput type="number"-->
-                                                   <!--[(ngModel)]="targetLatitude"-->
-                                                   <!--placeholder="Latitude">-->
-                                            <!--<button mat-button *ngIf="targetLatitude" matSuffix mat-icon-button-->
-                                                    <!--aria-label="Clear"-->
-                                                    <!--(click)="targetLatitude=null; targetLongitude=null">-->
-                                                <!--<mat-icon>close</mat-icon>-->
-                                            <!--</button>-->
-                                        <!--</mat-form-field>-->
-                                    <!--</td>-->
-                                    <!--<td>-->
-                                        <!--<mat-form-field class="">-->
-                                            <!--<input matInput type="number"-->
-                                                   <!--[(ngModel)]="targetLongitude"-->
-                                                   <!--placeholder="Longitude">-->
-                                            <!--<button mat-button *ngIf="targetLongitude" matSuffix mat-icon-button-->
-                                                    <!--aria-label="Clear"-->
-                                                    <!--(click)="targetLatitude=null; targetLongitude=null">-->
-                                                <!--<mat-icon>close</mat-icon>-->
-                                            <!--</button>-->
-                                        <!--</mat-form-field>-->
-                                    <!--</td>-->
-                                <!--</tr>-->
-                            <!--</table>-->
-                        <!--</div>-->
                         <div class="row">
                             <div class="col-xs-6">
                                 <mat-form-field class="coordinates-input">
@@ -167,14 +137,53 @@
     <div class="no-padding col-xs-12 full-width">
         <div id="next-person-container">
             <mat-card>
-                <mat-card-content>
-                    <span id="pass-text">Pass your device to your friend</span>
+                <mat-card-content id="next-person-content">
+                    <span>Pass the device to your friend</span>
                     <br>
-                    <button mat-raised-button color="primary" (click)="continueFromNextPerson()">Continue <span
+                    <button mat-raised-button color="primary" id="pass-button" (click)="continueFromNextPerson()">
+                        Continue <span
                             class="glyphicon glyphicon-play"></span>
                     </button>
                 </mat-card-content>
             </mat-card>
         </div>
+    </div>
+</div>
+<div class="row" *ngIf="pageState === 'decidedPlace'">
+    <div id="chosen-place-column" class="col-xs-12">
+        <mat-card>
+            <mat-card-header>
+                <a mat-card-avatar href="{{chosenPlace.url}}"
+                   target="_blank">
+                    <img mat-card-avatar class="place-thumbnail" src="{{chosenPlace.image_url}}">
+                </a>
+                <h1 id="chosen-place-name">{{chosenPlace.name}}</h1>
+            </mat-card-header>
+            <!--<img mat-card-image src="{{chosenPlace.image_url}}">-->
+            <mat-card-content>
+                <br>
+                <span>
+                    <span class="place-price">{{chosenPlace.price}}</span>
+                    <span class="place-rating-container">
+                        <span class="place-rating" *ngFor="let i of getArrayOfLength(chosenPlace.rating)">★</span>
+                    </span>
+                    <span class="place-distance">{{(chosenPlace.distance / 1000).toFixed(1)}} km</span>
+                </span>
+                <br>
+                <a class="place-address"
+                   href="https://maps.google.com/?q={{getAddressString(chosenPlace.location)}}"
+                   target="_blank">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    {{getAddressString(chosenPlace.location)}}
+                </a>
+                <br>
+                <a href="https://maps.google.com/?q={{getAddressString(chosenPlace.location)}}"
+                   target="_blank">
+                    <button mat-raised-button color="primary">
+                        Open in maps
+                    </button>
+                </a>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

@@ -3,7 +3,7 @@
     margin-right: 0;
 }
 
-#search-card-container, #loading-card-container, #instruction-card-column, .unremoved-place-column, #search-container, #next-person-container {
+#search-card-container, #loading-card-container, #instruction-card-column, .unremoved-place-column, #search-container, #next-person-container, #chosen-place-column {
     padding: 10px;
 }
 
@@ -61,6 +61,15 @@
     color: #DC3545;
 }
 
-#pass-text {
-    padding-bottom: 10px;
+#pass-button {
+    margin-top: 10px
+}
+
+#next-person-content {
+    text-align: center;
+}
+
+#chosen-place-name {
+    vertical-align: central;
+    margin: 0;
 }

@@ -19,7 +19,6 @@ export class AppComponent implements OnInit, OnDestroy {
     public targetLongitude: number;
     public targetLocation: string;
 
-
     public searchLatitude: number;
     public searchLongitude: number;
     public unremovedPlaces: any;
@@ -27,6 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public numToRemove: number;
 
     private API_ADDRESS = '/api/nearby-places';
+    public chosenPlace;
 
     constructor(private http: HttpClient, private route: ActivatedRoute) {
     }
@@ -34,7 +34,6 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const component = this;
         this.routeParameterSubscription = this.route.queryParams.subscribe(params => {
-            console.log(params);
             if (+params['latitude'] && +params['longitude']) {
                 component.targetLatitude = +params['latitude'];
                 component.targetLongitude = +params['longitude'];
@@ -120,7 +119,8 @@ export class AppComponent implements OnInit, OnDestroy {
         this.removedPlaces.push(place);
         this.numToRemove = this.numToRemove - 1;
         if (this.unremovedPlaces.length == 1) {
-            this.pageState = 'decidedPlace'
+            this.pageState = 'decidedPlace';
+            this.chosenPlace = this.unremovedPlaces[0];
         }
         else if (this.numToRemove <= 0) {
             this.numToRemove = Math.floor(this.unremovedPlaces.length / 2);
