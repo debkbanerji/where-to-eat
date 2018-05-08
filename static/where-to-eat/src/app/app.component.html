@@ -101,7 +101,10 @@
     <div class="col-xs-12 col-md-6 col-lg-4 unremoved-place-column" *ngFor="let place of unremovedPlaces">
         <mat-card>
             <mat-card-header>
-                <img mat-card-avatar class="place-thumbnail" src="{{place.image_url}}">
+                <a mat-card-avatar href="{{place.url}}"
+                   target="_blank">
+                    <img mat-card-avatar class="place-thumbnail" src="{{place.image_url}}">
+                </a>
                 <mat-card-title class="place-name">{{place.name}}</mat-card-title>
                 <mat-card-subtitle>
                     <span class="place-price">{{place.price}}</span>
@@ -116,7 +119,11 @@
                 </button>
             </mat-card-header>
             <mat-card-content>
-                <span class="place-address">{{getAddressString(place.location)}}</span>
+                <a class="place-address"
+                   href="https://maps.google.com/?q={{getAddressString(place.location)}}"
+                   target="_blank">
+                    {{getAddressString(place.location)}}
+                </a>
             </mat-card-content>
         </mat-card>
     </div>
