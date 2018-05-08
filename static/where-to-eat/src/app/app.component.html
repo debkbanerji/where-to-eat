@@ -100,7 +100,7 @@
     </div>
     <div class="col-xs-12 col-md-6 col-lg-4 unremoved-place-column" *ngFor="let place of unremovedPlaces">
         <mat-card>
-            <mat-card-header class="place-header">
+            <mat-card-header>
                 <img mat-card-avatar class="place-thumbnail" src="{{place.image_url}}">
                 <mat-card-title class="place-name">{{place.name}}</mat-card-title>
                 <mat-card-subtitle>
@@ -110,7 +110,8 @@
                     </span>
                     <span class="place-distance">{{(place.distance / 1000).toFixed(1)}} km</span>
                 </mat-card-subtitle>
-                <button mat-fab color="warn" class="remove-place-button">
+                <span class="fill-remaining-space"></span>
+                <button mat-mini-fab color="warn">
                     <mat-icon aria-label="Remove Place">close</mat-icon>
                 </button>
             </mat-card-header>

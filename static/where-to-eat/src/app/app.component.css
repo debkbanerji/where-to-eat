@@ -24,17 +24,12 @@
 }
 
 #search-location, .place-address {
-    color: rgba(0,0,0,.54);
+    color: rgba(0, 0, 0, .54);
     font-size: 12px;
 }
 
-.place-header {
-    /*display: inline;*/
-}
-
-.remove-place-button {
-    position: relative;
-    float: right;
+.fill-remaining-space {
+    flex: 1;
 }
 
 .place-name {
