@@ -3,10 +3,7 @@
     margin-right: 0;
 }
 
-#search-card-container, #loading-card-container {
-    padding: 10px;
-}
-#search-container {
+#search-card-container, #loading-card-container, #instruction-card-container, .unremoved-place-column, #search-container {
     padding: 10px;
 }
 
@@ -24,4 +21,20 @@
 
 #loading-spinner {
     margin: auto;
+}
+
+.place-name {
+    vertical-align: central;
+}
+
+.place-price {
+    color: #28A745;
+}
+
+.place-rating-container {
+    padding-left: 10px;
+}
+
+.place-rating {
+    color: #DC3545;
 }

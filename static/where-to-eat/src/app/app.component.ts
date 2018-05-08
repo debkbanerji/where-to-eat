@@ -18,9 +18,15 @@ export class AppComponent implements OnInit, OnDestroy {
     public targetLongitude: number;
     public targetLocation: string;
 
-    private API_ADDRESS = '/api/nearby-places';
 
-    // private API_ADDRESS = 'https://where-2-eat.herokuapp.com//api/nearby-places';
+    public searchLatitude: number;
+    public searchLongitude: number;
+    public unremovedPlaces: any;
+    public removedPlaces: any;
+    public numToRemove: number;
+
+    private API_ADDRESS = '/api/nearby-places';
+    // private API_ADDRESS = 'https://wheretoeat.debkbanerji.com/api/nearby-places';
 
     constructor(private http: HttpClient, private route: ActivatedRoute) {
     }
@@ -84,6 +90,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.http.get(targetAddress).subscribe(response => {
             console.log('response', response);
+
+            component.searchLatitude = response['search_center']['latitude'];
+            component.searchLongitude = response['search_center']['longitude'];
+            component.unremovedPlaces = response['places'];
+            component.removedPlaces = [];
+            component.numToRemove = Math.floor(component.unremovedPlaces.length / 2);
+
             component.httpErrorMessage = null;
             this.pageState = 'afterSearch';
         }, (error => {
@@ -92,6 +105,22 @@ export class AppComponent implements OnInit, OnDestroy {
             this.pageState = 'beforeSearch';
         }));
     }
+
+    public getAddressString(addressObject) {
+        const addressArray = [];
+        const componentLabels = ['address1', 'address2', 'address3', 'city', 'state', 'zip_code'];
+        for (let i = 0; i < componentLabels.length; i++) {
+            const component = addressObject[componentLabels[i]];
+            if (component && component != '') {
+                addressArray.push(component)
+            }
+        }
+        return addressArray.join(', ');
+    }
+
+    public getArrayOfLength = function(num) {
+        return new Array(Math.ceil(num));
+    };
 
     ngOnDestroy(): void {
         this.routeParameterSubscription.unsubscribe();
