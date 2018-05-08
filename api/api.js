@@ -42,8 +42,13 @@ router.get('/nearby-places', function (req, res) {
         //     res.status(500).send(errorMessage);
     } else {
         const requestOptions = {};
-        requestOptions.latitude = params.latitude;
-        requestOptions.longitude = params.longitude;
+        if (requestOptions.latitude && requestOptions.longitude) {
+            requestOptions.latitude = params.latitude;
+            requestOptions.longitude = params.longitude;
+        }
+        if (params.location) {
+            requestOptions.location = params.location;
+        }
         requestOptions.radius = params.radius || 8000;
         requestOptions.limit = params.limit || 30;
         // Sort by best_match, rating, review_count or distance
@@ -55,10 +60,6 @@ router.get('/nearby-places', function (req, res) {
         if (params.term) {
             requestOptions.term = params.term;
             // requestOptions.sort_by = params.sort_by || 'best_match';
-        }
-
-        if (params.location) {
-            requestOptions.location = params.location;
         }
 
         const requestOptionsKeys = Object.keys(requestOptions);
@@ -92,17 +93,27 @@ router.get('/nearby-places', function (req, res) {
                 const placeNames = [];
                 const places = [];
 
-                for (let i =0; i < allPlaces.length; i++) {
-                    const placeName = allPlaces[i].name;
-                    if (placeNames.indexOf(placeName) < 0) {
-                        placeNames.push(placeName);
-                        places.push(allPlaces[i]);
+                if (allPlaces) {
+                    for (let i = 0; i < allPlaces.length; i++) {
+                        const placeName = allPlaces[i].name;
+                        if (placeNames.indexOf(placeName) < 0) {
+                            placeNames.push(placeName);
+                            places.push(allPlaces[i]);
+                        }
                     }
                 }
 
                 shuffleArray(places);
 
-                const searchCenter = body['region']['center'];
+                let searchCenter;
+                if (body['region']) {
+                    searchCenter = body['region']['center'];
+                } else {
+                    searchCenter = {
+                        latitude: null,
+                        longitude: null
+                    }
+                }
                 res.send({
                     places: places,
                     search_center: searchCenter
