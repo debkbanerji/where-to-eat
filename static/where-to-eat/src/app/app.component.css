@@ -38,3 +38,8 @@
 .place-rating {
     color: #DC3545;
 }
+
+.place-distance {
+    padding-left: 10px;
+    color: #DC3545;
+}

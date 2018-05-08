@@ -9,22 +9,22 @@
                 <mat-card-content>
                     <div id="search-container">
                         <small class="error-text" *ngIf="httpErrorMessage">
-                            Unable to reach the server. Please try again.
+                            Unable to reach the server. Please try again later.
                         </small>
                         <mat-form-field class="full-width">
                             <input matInput [(ngModel)]="targetLocation" placeholder="Address">
                         </mat-form-field>
-                        <table class="full-width" cellspacing="0">
+                        <table cellspacing="0">
                             <tr>
                                 <td>
-                                    <mat-form-field class="full-width">
+                                    <mat-form-field>
                                         <input matInput type="number"
                                                [(ngModel)]="targetLatitude"
                                                placeholder="Latitude">
                                     </mat-form-field>
                                 </td>
                                 <td>
-                                    <mat-form-field class="full-width">
+                                    <mat-form-field>
                                         <input matInput type="number"
                                                [(ngModel)]="targetLongitude"
                                                placeholder="Longitude">
@@ -91,6 +91,7 @@
                     <span class="place-rating-container">
                         <span class="place-rating" *ngFor="let i of getArrayOfLength(place.rating)">★</span>
                     </span>
+                    <span class="place-distance">{{(place.distance / 1000).toFixed(1)}} km</span>
                 </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
