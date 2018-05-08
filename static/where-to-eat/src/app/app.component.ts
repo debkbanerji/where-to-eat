@@ -26,9 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public removedPlaces: any;
     public numToRemove: number;
 
-    // private API_ADDRESS = '/api/nearby-places';
-    // private API_ADDRESS = 'https://wheretoeat.debkbanerji.com/api/nearby-places';
-    private API_ADDRESS = 'http://localhost:3000/api/nearby-places';
+    private API_ADDRESS = '/api/nearby-places';
 
     constructor(private http: HttpClient, private route: ActivatedRoute) {
     }

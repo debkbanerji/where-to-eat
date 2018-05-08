@@ -3,7 +3,7 @@
     margin-right: 0;
 }
 
-#search-card-container, #loading-card-container, #instruction-card-column, .unremoved-place-column, #search-container {
+#search-card-container, #loading-card-container, #instruction-card-column, .unremoved-place-column, #search-container, #next-person-container {
     padding: 10px;
 }
 
@@ -55,4 +55,8 @@
 .place-distance {
     padding-left: 10px;
     color: #DC3545;
+}
+
+#pass-text {
+    padding-bottom: 10px;
 }

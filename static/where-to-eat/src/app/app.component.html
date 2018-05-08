@@ -91,12 +91,12 @@
         <div id="instruction-card-container">
             <mat-card>
                 <mat-card-content>
-                    <span>Remove your <b>{{numToRemove}}</b> least favorite places</span>
+                    <span>Remove your <b>{{numToRemove}}</b> least favorite place{{numToRemove > 1 ? 's': ''}}</span>
                     <br>
                     <a id="search-location"
                        href="https://maps.google.com/?ll={{searchLatitude}},{{searchLongitude}}"
-                          target="_blank">
-                                            <span class="glyphicon glyphicon-map-marker"></span>
+                       target="_blank">
+                        <span class="glyphicon glyphicon-map-marker"></span>
                         Searching from {{searchLatitude}}, {{searchLongitude}}</a>
                 </mat-card-content>
             </mat-card>
@@ -131,5 +131,20 @@
                 </a>
             </mat-card-content>
         </mat-card>
+    </div>
+</div>
+<div class="row" *ngIf="pageState === 'passToNextPerson'">
+    <div class="no-padding col-xs-12 full-width">
+        <div id="next-person-container">
+            <mat-card>
+                <mat-card-content>
+                    <span id="pass-text">Pass your device to your friend</span>
+                    <br>
+                    <button mat-raised-button color="primary" (click)="continueFromNextPerson()">Continue <span
+                            class="glyphicon glyphicon-play"></span>
+                    </button>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>
