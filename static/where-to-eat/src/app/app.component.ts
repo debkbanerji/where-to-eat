@@ -117,6 +117,23 @@ export class AppComponent implements OnInit, OnDestroy {
         }));
     }
 
+    public removePlace(place) {
+        this.unremovedPlaces.splice(this.unremovedPlaces.indexOf(place), 1);
+        this.removedPlaces.push(place);
+        this.numToRemove = this.numToRemove - 1;
+        if (this.unremovedPlaces.length == 1) {
+            this.pageState = 'decidedPlace'
+        }
+        else if (this.numToRemove <= 0) {
+            this.numToRemove = Math.floor(this.unremovedPlaces.length / 2);
+            this.pageState = 'passToNextPerson'
+        }
+    }
+
+    public continueFromNextPerson() {
+        this.pageState = 'afterSearch'
+    }
+
     public getAddressString(addressObject) {
         const addressArray = [];
         const componentLabels = ['address1', 'address2', 'address3', 'city', 'state', 'zip_code'];
@@ -129,7 +146,7 @@ export class AppComponent implements OnInit, OnDestroy {
         return addressArray.join(', ');
     }
 
-    public getArrayOfLength = function(num) {
+    public getArrayOfLength = function (num) {
         return new Array(Math.ceil(num));
     };
 
