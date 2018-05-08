@@ -157,7 +157,11 @@
                    target="_blank">
                     <img mat-card-avatar class="place-thumbnail" src="{{chosenPlace.image_url}}">
                 </a>
-                <h1 id="chosen-place-name">{{chosenPlace.name}}</h1>
+                <mat-card-title><h1 id="chosen-place-name">{{chosenPlace.name}}</h1></mat-card-title>
+                <span class="fill-remaining-space"></span>
+                <button mat-mini-fab color="primary" (click)="resetPage()">
+                    <mat-icon aria-label="Reset">replay</mat-icon>
+                </button>
             </mat-card-header>
             <!--<img mat-card-image src="{{chosenPlace.image_url}}">-->
             <mat-card-content>

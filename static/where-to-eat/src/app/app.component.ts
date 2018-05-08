@@ -132,6 +132,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.pageState = 'afterSearch'
     }
 
+    public resetPage() {
+        this.pageState = 'beforeSearch';
+    }
+
     public getAddressString(addressObject) {
         const addressArray = [];
         const componentLabels = ['address1', 'address2', 'address3', 'city', 'state', 'zip_code'];
