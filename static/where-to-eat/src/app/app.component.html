@@ -80,7 +80,7 @@
         <div id="loading-card-container">
             <mat-card>
                 <mat-card-content id="loading-spinner-container">
-                    <mat-spinner  color="primary" id="loading-spinner"></mat-spinner>
+                    <mat-spinner color="primary" id="loading-spinner"></mat-spinner>
                 </mat-card-content>
             </mat-card>
         </div>
@@ -141,8 +141,8 @@
                     <span>Pass the device to your friend</span>
                     <br>
                     <button mat-raised-button color="primary" id="pass-button" (click)="continueFromNextPerson()">
-                        Continue <span
-                            class="glyphicon glyphicon-play"></span>
+                        Continue
+                        <mat-icon aria-label="Continue">play_arrow</mat-icon>
                     </button>
                 </mat-card-content>
             </mat-card>
