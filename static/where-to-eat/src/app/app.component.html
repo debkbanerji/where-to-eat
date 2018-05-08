@@ -1,5 +1,5 @@
 <div class="row" *ngIf="pageState === 'beforeSearch'">
-    <div class="col-xs-12 full-width">
+    <div class="no-padding col-xs-12 full-width">
         <div id="search-card-container">
             <mat-card>
                 <mat-card-header>
@@ -76,7 +76,7 @@
     </div>
 </div>
 <div class="row" *ngIf="pageState === 'loading'">
-    <div class="col-xs-12 full-width">
+    <div class="no-padding col-xs-12 full-width">
         <div id="loading-card-container">
             <mat-card>
                 <mat-card-content id="loading-spinner-container">
@@ -87,7 +87,7 @@
     </div>
 </div>
 <div class="row" *ngIf="pageState === 'afterSearch'">
-    <div class="col-xs-12 full-width">
+    <div  id="instruction-card-column" class="col-xs-12 full-width">
         <div id="instruction-card-container">
             <mat-card>
                 <mat-card-content>
@@ -122,8 +122,10 @@
                 <a class="place-address"
                    href="https://maps.google.com/?q={{getAddressString(place.location)}}"
                    target="_blank">
+                    <span class="glyphicon glyphicon-map-marker"></span>
                     {{getAddressString(place.location)}}
                 </a>
+
             </mat-card-content>
         </mat-card>
     </div>

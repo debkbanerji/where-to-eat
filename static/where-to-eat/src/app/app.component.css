@@ -3,12 +3,16 @@
     margin-right: 0;
 }
 
-#search-card-container, #loading-card-container, #instruction-card-container, .unremoved-place-column, #search-container {
+#search-card-container, #loading-card-container, #instruction-card-column, .unremoved-place-column, #search-container {
     padding: 10px;
 }
 
 .full-width {
     width: 100%;
+}
+
+.no-padding {
+    padding: 0;
 }
 
 .error-text {
