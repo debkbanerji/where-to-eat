@@ -50,7 +50,7 @@ router.get('/nearby-places', function (req, res) {
             requestOptions.location = params.location;
         }
         requestOptions.radius = params.radius || 4000;
-        requestOptions.limit = params.limit || 50;
+        requestOptions.limit = params.limit || 25;
         // Sort by best_match, rating, review_count or distance
         requestOptions.sort_by = params.sort_by || 'distance';
         requestOptions.open_now = params.open_now || true;

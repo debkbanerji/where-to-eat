@@ -68,6 +68,15 @@
                                     <mat-option value="12000">Not so Close</mat-option>
                                 </mat-select>
                             </mat-form-field>
+                            <br>
+                            <span class="extra-options-label">Maximum number of places to show</span>
+                            <mat-form-field>
+                                <mat-select [(ngModel)]="searchLimit">
+                                    <mat-option value="10">Very Few</mat-option>
+                                    <mat-option value="25">A Few</mat-option>
+                                    <mat-option value="50">A Lot</mat-option>
+                                </mat-select>
+                            </mat-form-field>
                             <!--TODO: Add search limit-->
                             <br>
                             <span class="extra-options-label">Maximum price</span>

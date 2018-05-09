@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private API_ADDRESS = '/api/nearby-places';
     public useMoreOptions: boolean = false;
     public maxDistance = '3000'; // Using string for cleaner binding to material select
+    public searchLimit = '25';
     public onlyIncludeOpenNow = true;
     public maxPrice = 4;
     public minRating = 1;
@@ -87,6 +88,7 @@ export class AppComponent implements OnInit, OnDestroy {
         // More options
         requestParams['open_now'] = component.onlyIncludeOpenNow;
         requestParams['radius'] = component.maxDistance;
+        requestParams['limit'] = component.searchLimit;
         const pricesArray = [];
         for (let i = 1; i <= component.maxPrice; i++) {
             pricesArray.push(i);
