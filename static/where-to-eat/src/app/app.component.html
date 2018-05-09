@@ -196,7 +196,8 @@
                        target="_blank">
                         <img mat-card-avatar class="place-thumbnail" src="{{place.image_url}}">
                     </a>
-                    <mat-card-title class="place-name">{{place.name}}</mat-card-title>
+                    <mat-card-title class="place-name" href="{{place.url}}"
+                       target="_blank">{{place.name}}</mat-card-title>
                     <mat-card-subtitle>
                         <span class="place-price">{{place.price}}</span>
                         <span class="place-rating-container">
