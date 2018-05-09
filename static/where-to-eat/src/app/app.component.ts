@@ -27,6 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private API_ADDRESS = '/api/nearby-places';
     public useMoreOptions: boolean = false;
+    public maxPrice = 4;
+    public minRating = 1;
 
     public chosenPlace;
 
@@ -78,6 +80,14 @@ export class AppComponent implements OnInit, OnDestroy {
             requestParams['latitude'] = component.targetLatitude;
             requestParams['longitude'] = component.targetLongitude;
         }
+
+        // More options
+        const pricesArray = [];
+        for (let i = 1; i <= component.maxPrice; i++) {
+           pricesArray.push(i);
+        }
+        requestParams['price'] = pricesArray.join(',');
+        requestParams['min_rating'] = component.minRating;
 
         const requestParamsKeys = Object.keys(requestParams);
         const requestParamsList = [];

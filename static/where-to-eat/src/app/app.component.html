@@ -56,7 +56,21 @@
                                     <span *ngIf="!useMoreOptions" class="light-text">More options</span>
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
-
+                            <span class="slider-label">Maximum price range</span>
+                            <mat-slider
+                                    color="primary"
+                                    [max]="4"
+                                    [min]="1"
+                                    [(ngModel)]="maxPrice">
+                            </mat-slider>
+                            <br>
+                            <span class="slider-label">Minimum rating</span>
+                            <mat-slider
+                                    color="primary"
+                                    [max]="5"
+                                    [min]="1"
+                                    [(ngModel)]="minRating">
+                            </mat-slider>
                         </mat-expansion-panel>
                         <br>
                         <span>

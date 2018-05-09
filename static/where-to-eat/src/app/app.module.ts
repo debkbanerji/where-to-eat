@@ -4,8 +4,9 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {
     MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule, MatSliderModule
 } from "@angular/material";
+import 'hammerjs';
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
@@ -25,6 +26,7 @@ import {RouterModule} from "@angular/router";
         MatExpansionModule,
         MatInputModule,
         MatButtonModule,
+        MatSliderModule,
         MatIconModule,
         MatProgressSpinnerModule
     ],

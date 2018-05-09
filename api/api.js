@@ -93,10 +93,12 @@ router.get('/nearby-places', function (req, res) {
                 const placeNames = [];
                 const places = [];
 
+                const minRating = params.min_rating || 1;
+
                 if (allPlaces) {
                     for (let i = 0; i < allPlaces.length; i++) {
                         const placeName = allPlaces[i].name;
-                        if (placeNames.indexOf(placeName) < 0) {
+                        if (placeNames.indexOf(placeName) < 0 && allPlaces[i].rating >= minRating) {
                             placeNames.push(placeName);
                             places.push(allPlaces[i]);
                         }
