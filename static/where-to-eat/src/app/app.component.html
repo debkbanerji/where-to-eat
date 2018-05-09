@@ -56,9 +56,13 @@
                                     <span *ngIf="!useMoreOptions" class="light-text">More options</span>
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
-                            <mat-checkbox [(ngModel)]="onlyIncludeOpenNow" color="primary">
-                                <span id="open-now-checkbox-label">Only include open places</span>
-                            </mat-checkbox>
+                            <span class="extra-options-label">Selection style</span>
+                            <mat-form-field>
+                                <mat-select [(ngModel)]="selectionStyle">
+                                    <mat-option value="list">List</mat-option>
+                                    <mat-option value="comparison">Comparison</mat-option>
+                                </mat-select>
+                            </mat-form-field>
                             <br>
                             <span class="extra-options-label">How far to look</span>
                             <mat-form-field>
@@ -93,6 +97,10 @@
                                     [min]="1"
                                     [(ngModel)]="minRating">
                             </mat-slider>
+                            <br>
+                            <mat-checkbox [(ngModel)]="onlyIncludeOpenNow" color="primary">
+                                <span id="open-now-checkbox-label">Only include open places</span>
+                            </mat-checkbox>
                             <mat-form-field class="full-width">
                                 <input matInput [(ngModel)]="searchTerm" placeholder="Search Term">
                                 <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button
@@ -177,35 +185,37 @@
             </mat-card>
         </div>
     </div>
-    <div class="col-xs-12 col-md-6 col-lg-4 unremoved-place-column" *ngFor="let place of unremovedPlaces">
-        <mat-card>
-            <mat-card-header>
-                <a mat-card-avatar href="{{place.url}}"
-                   target="_blank">
-                    <img mat-card-avatar class="place-thumbnail" src="{{place.image_url}}">
-                </a>
-                <mat-card-title class="place-name">{{place.name}}</mat-card-title>
-                <mat-card-subtitle>
-                    <span class="place-price">{{place.price}}</span>
-                    <span class="place-rating-container">
+    <div *ngFor="let place of unremovedPlaces; let i = index">
+        <div class="col-xs-12 col-md-6 col-lg-4 unremoved-place-column" *ngIf="i <= 1 || selectionStyle == 'list'">
+            <mat-card>
+                <mat-card-header>
+                    <a mat-card-avatar href="{{place.url}}"
+                       target="_blank">
+                        <img mat-card-avatar class="place-thumbnail" src="{{place.image_url}}">
+                    </a>
+                    <mat-card-title class="place-name">{{place.name}}</mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="place-price">{{place.price}}</span>
+                        <span class="place-rating-container">
                         <span class="place-rating" *ngFor="let i of getArrayOfLength(place.rating)">★</span>
                     </span>
-                    <span class="place-distance">{{(place.distance / 1000).toFixed(1)}} km</span>
-                </mat-card-subtitle>
-                <span class="fill-remaining-space"></span>
-                <button mat-mini-fab color="warn" (click)="removePlace(place)">
-                    <mat-icon aria-label="Remove Place">close</mat-icon>
-                </button>
-            </mat-card-header>
-            <mat-card-content>
-                <a class="place-address"
-                   href="https://maps.google.com/?q={{getAddressString(place.location)}}"
-                   target="_blank">
-                    <span class="glyphicon glyphicon-map-marker"></span>
-                    {{getAddressString(place.location)}}
-                </a>
-            </mat-card-content>
-        </mat-card>
+                        <span class="place-distance">{{(place.distance / 1000).toFixed(1)}} km</span>
+                    </mat-card-subtitle>
+                    <span class="fill-remaining-space"></span>
+                    <button mat-mini-fab color="warn" (click)="removePlace(place)">
+                        <mat-icon aria-label="Remove Place">close</mat-icon>
+                    </button>
+                </mat-card-header>
+                <mat-card-content>
+                    <a class="place-address"
+                       href="https://maps.google.com/?q={{getAddressString(place.location)}}"
+                       target="_blank">
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                        {{getAddressString(place.location)}}
+                    </a>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 </div>
 <div class="row" *ngIf="pageState === 'afterSearch'">

@@ -25,7 +25,9 @@ export class AppComponent implements OnInit, OnDestroy {
     public maxPrice = 4;
     public minRating = 1;
     public searchTerm: string = null;
-    private API_ADDRESS = '/api/nearby-places';
+    public selectionStyle = 'list';
+    // private API_ADDRESS = '/api/nearby-places';
+    private API_ADDRESS = 'http://localhost:3000/api/nearby-places';
 
     public searchLatitude: number;
     public searchLongitude: number;
@@ -120,7 +122,11 @@ export class AppComponent implements OnInit, OnDestroy {
                 component.searchLongitude = response['search_center']['longitude'];
                 component.unremovedPlaces = response['places'];
                 component.removedPlaces = [];
-                component.numToRemove = Math.floor(component.unremovedPlaces.length / 2);
+                if (this.selectionStyle == 'list') {
+                    this.numToRemove = Math.floor(this.unremovedPlaces.length / 2);
+                } else {
+                    this.numToRemove = 1;
+                }
 
                 component.httpErrorMessage = null;
                 component.noPlacesFound = false;
@@ -162,9 +168,12 @@ export class AppComponent implements OnInit, OnDestroy {
         if (this.unremovedPlaces.length == 1) {
             this.pageState = 'decidedPlace';
             this.chosenPlace = this.unremovedPlaces[0];
-        }
-        else if (this.numToRemove <= 0) {
-            this.numToRemove = Math.floor(this.unremovedPlaces.length / 2);
+        } else if (this.numToRemove <= 0) {
+            if (this.selectionStyle == 'list') {
+                this.numToRemove = Math.floor(this.unremovedPlaces.length / 2);
+            } else {
+                this.numToRemove = 1;
+            }
             this.pageState = 'passToNextPerson'
         }
     }
