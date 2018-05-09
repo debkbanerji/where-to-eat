@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {
-    MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatInputModule,
+    MatButtonModule, MatCardModule, MatCheckboxModule, MatExpansionModule, MatIconModule, MatInputModule,
     MatProgressSpinnerModule, MatSliderModule
 } from "@angular/material";
 import 'hammerjs';
@@ -26,6 +26,7 @@ import {RouterModule} from "@angular/router";
         MatExpansionModule,
         MatInputModule,
         MatButtonModule,
+        MatCheckboxModule,
         MatSliderModule,
         MatIconModule,
         MatProgressSpinnerModule

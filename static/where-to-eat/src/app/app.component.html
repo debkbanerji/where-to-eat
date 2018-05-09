@@ -12,7 +12,7 @@
                             Unable to reach the server. Please try again later.
                         </small>
                         <p *ngIf="noPlacesFound">
-                            We couldn't find any places near you
+                            We couldn't find any places to eat near you
                         </p>
                         <mat-form-field class="full-width">
                             <input matInput [(ngModel)]="targetLocation" placeholder="Address">
@@ -56,6 +56,10 @@
                                     <span *ngIf="!useMoreOptions" class="light-text">More options</span>
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
+                            <mat-checkbox [(ngModel)]="openNow" color="primary">
+                                <span id="open-now-checkbox-label">Only include open places</span>
+                            </mat-checkbox>
+                            <br>
                             <span class="slider-label">Maximum price range</span>
                             <mat-slider
                                     color="primary"

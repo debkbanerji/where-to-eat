@@ -15,6 +15,10 @@
     width: 90%;
 }
 
+#open-now-checkbox-label {
+    font-weight: normal !important;
+}
+
 .slider-label {
     padding-right: 10px;
 }

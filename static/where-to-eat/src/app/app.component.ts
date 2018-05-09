@@ -27,6 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private API_ADDRESS = '/api/nearby-places';
     public useMoreOptions: boolean = false;
+    public openNow = true;
     public maxPrice = 4;
     public minRating = 1;
 
@@ -82,9 +83,10 @@ export class AppComponent implements OnInit, OnDestroy {
         }
 
         // More options
+        requestParams['open_now'] = component.openNow;
         const pricesArray = [];
         for (let i = 1; i <= component.maxPrice; i++) {
-           pricesArray.push(i);
+            pricesArray.push(i);
         }
         requestParams['price'] = pricesArray.join(',');
         requestParams['min_rating'] = component.minRating;
