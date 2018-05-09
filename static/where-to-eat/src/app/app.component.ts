@@ -18,14 +18,6 @@ export class AppComponent implements OnInit, OnDestroy {
     public targetLatitude: number;
     public targetLongitude: number;
     public targetLocation: string;
-
-    public searchLatitude: number;
-    public searchLongitude: number;
-    public unremovedPlaces: any;
-    public removedPlaces: any;
-    public numToRemove: number;
-
-    private API_ADDRESS = '/api/nearby-places';
     public useMoreOptions: boolean = false;
     public maxDistance = '3000'; // Using string for cleaner binding to material select
     public searchLimit = '25';
@@ -33,6 +25,14 @@ export class AppComponent implements OnInit, OnDestroy {
     public maxPrice = 4;
     public minRating = 1;
     public searchTerm: string = null;
+    private API_ADDRESS = '/api/nearby-places';
+
+    public searchLatitude: number;
+    public searchLongitude: number;
+    public sortOrder: string;
+    public unremovedPlaces: any;
+    public removedPlaces: any;
+    public numToRemove: number;
 
     public chosenPlace;
 
@@ -134,6 +134,24 @@ export class AppComponent implements OnInit, OnDestroy {
             component.noPlacesFound = false;
             this.pageState = 'beforeSearch';
         }));
+    }
+
+    public sortUnremovedPlaces(sortOrder: string) {
+        console.log(sortOrder);
+
+        if (sortOrder === 'price') {
+            this.unremovedPlaces = this.unremovedPlaces.sort((x1, x2) => {
+                return x1.price.length - x2.price.length;
+            });
+        } else if (sortOrder === 'rating') {
+            this.unremovedPlaces = this.unremovedPlaces.sort((x1, x2) => {
+                return x1.rating - x2.rating;
+            });
+        } else if (sortOrder === 'distance') {
+            this.unremovedPlaces = this.unremovedPlaces.sort((x1, x2) => {
+                return x1.distance - x2.distance;
+            });
+        }
     }
 
     public removePlace(place) {
