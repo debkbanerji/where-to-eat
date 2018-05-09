@@ -30,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public onlyIncludeOpenNow = true;
     public maxPrice = 4;
     public minRating = 1;
+    public searchTerm: string = null;
 
     public chosenPlace;
 
@@ -90,6 +91,9 @@ export class AppComponent implements OnInit, OnDestroy {
         }
         requestParams['price'] = pricesArray.join(',');
         requestParams['min_rating'] = component.minRating;
+        if (component.searchTerm && component.searchTerm !== '') {
+            requestParams['term'] = component.searchTerm;
+        }
 
         const requestParamsKeys = Object.keys(requestParams);
         const requestParamsList = [];

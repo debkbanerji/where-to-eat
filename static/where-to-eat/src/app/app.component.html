@@ -75,6 +75,13 @@
                                     [min]="1"
                                     [(ngModel)]="minRating">
                             </mat-slider>
+                            <mat-form-field class="full-width">
+                                <input matInput [(ngModel)]="searchTerm" placeholder="Search Term">
+                                <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button
+                                        aria-label="Clear" (click)="searchTerm=null;">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </mat-form-field>
                         </mat-expansion-panel>
                         <br>
                         <span>
