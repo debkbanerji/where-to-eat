@@ -26,8 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public minRating = 1;
     public searchTerm: string = null;
     public selectionStyle = 'list';
-    // private API_ADDRESS = '/api/nearby-places';
-    private API_ADDRESS = 'http://localhost:3000/api/nearby-places';
+    private API_ADDRESS = '/api/nearby-places';
 
     public searchLatitude: number;
     public searchLongitude: number;

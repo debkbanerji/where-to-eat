@@ -164,23 +164,29 @@
                         <span class="glyphicon glyphicon-map-marker"></span>
                         Searching from {{searchLatitude}}, {{searchLongitude}}</a>
                     <br>
+                    <span class="light-text" *ngIf="selectionStyle === 'comparison'">
+                        {{unremovedPlaces.length - 1}} comparison<span *ngIf="unremovedPlaces.length > 2">s</span> remaining
+                    </span>
                     <br>
-                    <span class="extra-options-label">Order By</span>
-                    <mat-form-field>
-                        <mat-select [(ngModel)]="sortCriteria"
-                                    (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
-                            <mat-option value="price">Price</mat-option>
-                            <mat-option value="rating">Rating</mat-option>
-                            <mat-option value="distance">Distance</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-select [(ngModel)]="sortOrder"
-                                    (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
-                            <mat-option value="ascending">Ascending</mat-option>
-                            <mat-option value="descending">Descending</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                    <br>
+                    <div *ngIf="selectionStyle === 'list'">
+                        <span class="extra-options-label">Order By</span>
+                        <mat-form-field>
+                            <mat-select [(ngModel)]="sortCriteria"
+                                        (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
+                                <mat-option value="price">Price</mat-option>
+                                <mat-option value="rating">Rating</mat-option>
+                                <mat-option value="distance">Distance</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-select [(ngModel)]="sortOrder"
+                                        (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
+                                <mat-option value="ascending">Ascending</mat-option>
+                                <mat-option value="descending">Descending</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </div>
