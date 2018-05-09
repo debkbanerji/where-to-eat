@@ -59,10 +59,18 @@
                             <mat-checkbox [(ngModel)]="onlyIncludeOpenNow" color="primary">
                                 <span id="open-now-checkbox-label">Only include open places</span>
                             </mat-checkbox>
-                            <!--TODO: Add search radius-->
+                            <br>
+                            <span class="extra-options-label">How far to look</span>
+                            <mat-form-field>
+                                <mat-select [(ngModel)]="maxDistance">
+                                    <mat-option value="1000">Very Close</mat-option>
+                                    <mat-option value="3000">Close</mat-option>
+                                    <mat-option value="12000">Not so Close</mat-option>
+                                </mat-select>
+                            </mat-form-field>
                             <!--TODO: Add search limit-->
                             <br>
-                            <span class="slider-label">Maximum price range</span>
+                            <span class="extra-options-label">Maximum price</span>
                             <mat-slider
                                     color="primary"
                                     [max]="4"
@@ -70,7 +78,7 @@
                                     [(ngModel)]="maxPrice">
                             </mat-slider>
                             <br>
-                            <span class="slider-label">Minimum rating</span>
+                            <span class="extra-options-label">Minimum rating</span>
                             <mat-slider
                                     color="primary"
                                     [max]="5"
@@ -131,6 +139,7 @@
             <mat-card>
                 <mat-card-content>
                     <!--TODO: Add logo-->
+                    <!--TODO: Add 1v1 mode-->
                     <span>Remove your <b *ngIf="numToRemove > 1">{{numToRemove}}</b> least favorite place{{numToRemove > 1 ? 's': ''}}</span>
                     <br>
                     <a id="search-location"

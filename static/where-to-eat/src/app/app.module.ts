@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {
     MatButtonModule, MatCardModule, MatCheckboxModule, MatExpansionModule, MatIconModule, MatInputModule,
-    MatProgressSpinnerModule, MatSliderModule
+    MatProgressSpinnerModule, MatSelectModule, MatSliderModule
 } from "@angular/material";
 import 'hammerjs';
 import {FormsModule} from "@angular/forms";
@@ -25,6 +25,7 @@ import {RouterModule} from "@angular/router";
         MatCardModule,
         MatExpansionModule,
         MatInputModule,
+        MatSelectModule,
         MatButtonModule,
         MatCheckboxModule,
         MatSliderModule,

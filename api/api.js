@@ -49,8 +49,8 @@ router.get('/nearby-places', function (req, res) {
         if (params.location) {
             requestOptions.location = params.location;
         }
-        requestOptions.radius = params.radius || 8000;
-        requestOptions.limit = params.limit || 30;
+        requestOptions.radius = params.radius || 4000;
+        requestOptions.limit = params.limit || 50;
         // Sort by best_match, rating, review_count or distance
         requestOptions.sort_by = params.sort_by || 'distance';
         requestOptions.open_now = params.open_now || true;
@@ -83,9 +83,9 @@ router.get('/nearby-places', function (req, res) {
             } else {
                 body = JSON.parse(body);
 
-                if (process.env.USE_DEBUG_LOG) {
-                    console.log(body);
-                }
+                // if (process.env.USE_DEBUG_LOG) {
+                //     console.log(body);
+                // }
 
                 const allPlaces = body['businesses'];
 
