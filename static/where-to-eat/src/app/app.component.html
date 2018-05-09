@@ -169,7 +169,7 @@
                     <br *ngIf="selectionStyle === 'list'">
                     <div *ngIf="selectionStyle === 'list'">
                         <mat-form-field>
-                            <mat-select [(ngModel)]="sortCriteria" placeholder="Ordering"
+                            <mat-select [(ngModel)]="sortCriteria" placeholder="Order By"
                                         (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
                                 <mat-option value="price">Price</mat-option>
                                 <mat-option value="rating">Rating</mat-option>
