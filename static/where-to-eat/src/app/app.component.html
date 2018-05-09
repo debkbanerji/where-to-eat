@@ -59,6 +59,8 @@
                             <mat-checkbox [(ngModel)]="onlyIncludeOpenNow" color="primary">
                                 <span id="open-now-checkbox-label">Only include open places</span>
                             </mat-checkbox>
+                            <!--TODO: add search radius-->
+                            <!--TODO: add search limit-->
                             <br>
                             <span class="slider-label">Maximum price range</span>
                             <mat-slider
@@ -135,6 +137,7 @@
                        target="_blank">
                         <span class="glyphicon glyphicon-map-marker"></span>
                         Searching from {{searchLatitude}}, {{searchLongitude}}</a>
+                    <!--TODO: Add sorting-->
                 </mat-card-content>
             </mat-card>
         </div>
