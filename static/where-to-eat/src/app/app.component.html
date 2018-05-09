@@ -191,6 +191,13 @@
         </mat-card>
     </div>
 </div>
+<div class="row" *ngIf="pageState === 'afterSearch'">
+    <div class="col-xs-12 col-md-6 col-lg-4 unremoved-place-column" *ngFor="let place of removedPlaces">
+        <span class="light-text">
+            <del>{{place.name}}</del>
+        </span>
+    </div>
+</div>
 <div class="row" *ngIf="pageState === 'passToNextPerson'">
     <div class="no-padding col-xs-12 full-width">
         <div id="next-person-container">
