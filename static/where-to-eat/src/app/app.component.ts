@@ -26,6 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
     public numToRemove: number;
 
     private API_ADDRESS = '/api/nearby-places';
+    public useMoreOptions: boolean = false;
+
     public chosenPlace;
 
     constructor(private http: HttpClient, private route: ActivatedRoute) {

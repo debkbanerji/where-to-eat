@@ -47,6 +47,18 @@
                                 </mat-form-field>
                             </div>
                         </div>
+                        <mat-expansion-panel
+                                (opened)="useMoreOptions = true"
+                                (closed)="useMoreOptions = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <span *ngIf="useMoreOptions">More options</span>
+                                    <span *ngIf="!useMoreOptions" class="light-text">More options</span>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                        </mat-expansion-panel>
+                        <br>
                         <span>
                             <small
                                     *ngIf="(targetLocation == null || targetLocation === '')

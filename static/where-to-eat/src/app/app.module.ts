@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {
-    MatButtonModule, MatCardModule, MatIconModule, MatInputModule,
+    MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatInputModule,
     MatProgressSpinnerModule
 } from "@angular/material";
 import {FormsModule} from "@angular/forms";
@@ -22,6 +22,7 @@ import {RouterModule} from "@angular/router";
         HttpClientModule,
         FormsModule,
         MatCardModule,
+        MatExpansionModule,
         MatInputModule,
         MatButtonModule,
         MatIconModule,

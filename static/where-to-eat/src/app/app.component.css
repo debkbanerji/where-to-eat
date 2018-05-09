@@ -15,6 +15,10 @@
     width: 90%;
 }
 
+.light-text {
+    color: rgba(0,0,0,.54);
+}
+
 .full-width {
     width: 100%;
 }
