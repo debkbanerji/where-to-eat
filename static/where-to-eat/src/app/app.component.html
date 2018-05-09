@@ -155,7 +155,6 @@
             <mat-card>
                 <mat-card-content>
                     <!--TODO: Add logo-->
-                    <!--TODO: Add 1v1 mode-->
                     <span id="remove-instruction">Remove your <b *ngIf="numToRemove > 1">{{numToRemove}}</b> least favorite place{{numToRemove > 1 ? 's': ''}}</span>
                     <br>
                     <a id="search-location"
@@ -167,20 +166,18 @@
                     <span class="light-text" *ngIf="selectionStyle === 'comparison'">
                         {{unremovedPlaces.length - 1}} comparison<span *ngIf="unremovedPlaces.length > 2">s</span> remaining
                     </span>
-                    <br>
-                    <br>
+                    <br *ngIf="selectionStyle === 'list'">
                     <div *ngIf="selectionStyle === 'list'">
-                        <span class="extra-options-label">Order By</span>
                         <mat-form-field>
-                            <mat-select [(ngModel)]="sortCriteria"
+                            <mat-select [(ngModel)]="sortCriteria" placeholder="Ordering"
                                         (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
                                 <mat-option value="price">Price</mat-option>
                                 <mat-option value="rating">Rating</mat-option>
                                 <mat-option value="distance">Distance</mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <mat-form-field>
-                            <mat-select [(ngModel)]="sortOrder"
+                        <mat-form-field *ngIf="sortCriteria">
+                            <mat-select [(ngModel)]="sortOrder" placeholder="Order Direction"
                                         (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
                                 <mat-option value="ascending">Ascending</mat-option>
                                 <mat-option value="descending">Descending</mat-option>
