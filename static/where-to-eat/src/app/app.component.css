@@ -19,6 +19,10 @@
     font-weight: normal !important;
 }
 
+#invert-sort-checkbox-label {
+    font-weight: normal !important;
+}
+
 .extra-options-label {
     padding-right: 10px;
 }

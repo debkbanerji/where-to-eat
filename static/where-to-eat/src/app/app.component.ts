@@ -29,6 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     public searchLatitude: number;
     public searchLongitude: number;
+    public sortCriteria: string;
     public sortOrder: string;
     public unremovedPlaces: any;
     public removedPlaces: any;
@@ -136,20 +137,20 @@ export class AppComponent implements OnInit, OnDestroy {
         }));
     }
 
-    public sortUnremovedPlaces(sortOrder: string) {
-        console.log(sortOrder);
+    public sortUnremovedPlaces(sortCriteria: string, sortOrder: string) {
+        const sortFactor = (sortOrder !== 'descending' ? 1 : -1);
 
-        if (sortOrder === 'price') {
+        if (sortCriteria === 'price') {
             this.unremovedPlaces = this.unremovedPlaces.sort((x1, x2) => {
-                return x1.price.length - x2.price.length;
+                return (x1.price.length - x2.price.length) * sortFactor;
             });
-        } else if (sortOrder === 'rating') {
+        } else if (sortCriteria === 'rating') {
             this.unremovedPlaces = this.unremovedPlaces.sort((x1, x2) => {
-                return x1.rating - x2.rating;
+                return (x1.rating - x2.rating) * sortFactor;
             });
-        } else if (sortOrder === 'distance') {
+        } else if (sortCriteria === 'distance') {
             this.unremovedPlaces = this.unremovedPlaces.sort((x1, x2) => {
-                return x1.distance - x2.distance;
+                return (x1.distance - x2.distance) * sortFactor;
             });
         }
     }

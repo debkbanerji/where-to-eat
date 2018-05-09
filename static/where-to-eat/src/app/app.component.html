@@ -159,13 +159,20 @@
                     <br>
                     <span class="extra-options-label">Order By</span>
                     <mat-form-field>
-                        <mat-select [(ngModel)]="sortOrder" (selectionChange)="sortUnremovedPlaces(sortOrder)">
+                        <mat-select [(ngModel)]="sortCriteria"
+                                    (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
                             <mat-option value="price">Price</mat-option>
                             <mat-option value="rating">Rating</mat-option>
                             <mat-option value="distance">Distance</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    {{sortOrder}}
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="sortOrder"
+                                    (selectionChange)="sortUnremovedPlaces(sortCriteria, sortOrder)">
+                            <mat-option value="ascending">Ascending</mat-option>
+                            <mat-option value="descending">Descending</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </mat-card-content>
             </mat-card>
         </div>
