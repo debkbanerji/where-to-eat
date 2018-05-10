@@ -3,6 +3,7 @@
         <div id="search-card-container">
             <mat-card>
                 <mat-card-header>
+                    <img mat-card-avatar src="../assets/logo.png">
                     <mat-card-title>Get Started</mat-card-title>
                     <mat-card-subtitle>Enter your address or coordinates</mat-card-subtitle>
                 </mat-card-header>
@@ -194,7 +195,7 @@
                 <mat-card-header>
                     <a mat-card-avatar href="{{place.url}}"
                        target="_blank">
-                        <img mat-card-avatar class="place-thumbnail" src="{{place.image_url}}">
+                        <img mat-card-avatar src="{{place.image_url}}">
                     </a>
                     <mat-card-title class="place-name">
                         <a mat-card-avatar href="{{place.url}}"
@@ -254,7 +255,7 @@
             <mat-card-header>
                 <a mat-card-avatar href="{{chosenPlace.url}}"
                    target="_blank">
-                    <img mat-card-avatar class="place-thumbnail" src="{{chosenPlace.image_url}}">
+                    <img mat-card-avatar src="{{chosenPlace.image_url}}">
                 </a>
                 <mat-card-title><h1 id="chosen-place-name">{{chosenPlace.name}}</h1></mat-card-title>
                 <span class="fill-remaining-space"></span>
