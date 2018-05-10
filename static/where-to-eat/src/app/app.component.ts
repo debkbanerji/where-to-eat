@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public searchLatitude: number;
     public searchLongitude: number;
     public sortCriteria: string;
-    public sortOrder: string;
+    public sortOrder: string = 'ascending';
     public unremovedPlaces: any;
     public removedPlaces: any;
     public numToRemove: number;
