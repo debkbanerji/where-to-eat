@@ -74,6 +74,14 @@
                                 </mat-select>
                             </mat-form-field>
                             <br>
+                            <span class="extra-options-label">Display distance in</span>
+                            <mat-form-field>
+                                <mat-select [(ngModel)]="distanceUnits">
+                                    <mat-option value="km">Kilometres</mat-option>
+                                    <mat-option value="miles">Miles</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <br>
                             <span class="extra-options-label">Maximum number of places to show</span>
                             <mat-form-field>
                                 <mat-select [(ngModel)]="searchLimit">
@@ -155,8 +163,8 @@
         <div id="instruction-card-container">
             <mat-card>
                 <mat-card-content>
-                    <span class="remove-instruction"  *ngIf="numToRemove > 1">Remove <b>{{numToRemove}}</b> of your least favorite places</span>
-                    <span class="remove-instruction"  *ngIf="numToRemove <= 1">Remove your least favorite place</span>
+                    <span class="remove-instruction" *ngIf="numToRemove > 1">Remove <b>{{numToRemove}}</b> of your least favorite places</span>
+                    <span class="remove-instruction" *ngIf="numToRemove <= 1">Remove your least favorite place</span>
                     <br>
                     <a id="search-location"
                        href="https://maps.google.com/?ll={{searchLatitude}},{{searchLongitude}}"
@@ -207,7 +215,8 @@
                         <span class="place-rating-container">
                         <span class="place-rating" *ngFor="let i of getArrayOfLength(place.rating)">★</span>
                     </span>
-                        <span class="place-distance">{{(place.distance / 1000).toFixed(1)}} km</span>
+                        <span class="place-distance">{{(place.distance * (distanceUnits === 'km' ? 0.001 : 0.000621371)).toFixed(1)}}
+                            {{distanceUnits}}</span>
                     </mat-card-subtitle>
                     <span class="fill-remaining-space"></span>
                     <button mat-mini-fab color="primary" (click)="removePlace(place)">

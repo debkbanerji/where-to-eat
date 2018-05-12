@@ -19,6 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public targetLongitude: number;
     public targetLocation: string;
     public useMoreOptions: boolean = false;
+    public distanceUnits: string = 'km';
     public maxDistance = '3000'; // Using string for cleaner binding to material select
     public searchLimit = '25';
     public onlyIncludeOpenNow = true;
@@ -53,6 +54,9 @@ export class AppComponent implements OnInit, OnDestroy {
             }
             component.setCoordinatesToRequested();
         });
+        if (window.navigator.language === 'en-US') {
+            this.distanceUnits = 'miles';
+        }
     }
 
     public setCoordinatesToRequested(): void {
