@@ -55,7 +55,7 @@ router.get('/nearby-places', function (req, res) {
         requestOptions.sort_by = params.sort_by || 'distance';
         requestOptions.open_now = params.open_now || true;
         requestOptions.price = params.price || '1,2,3,4';
-        requestOptions.categories = params.categories || 'restaurants';
+        requestOptions.categories = params.categories || 'restaurants,food';
 
         if (params.term) {
             requestOptions.term = params.term;
