@@ -12,9 +12,11 @@
                         <small class="error-text" *ngIf="httpErrorMessage">
                             Unable to reach the server. Please try again later.
                         </small>
-                        <p *ngIf="noPlacesFound">
-                            We couldn't find any places to eat near you
-                        </p>
+                        <div *ngIf="noPlacesFound">
+                            <p>We couldn't find any places to eat near you</p>
+                            <p>Try widening the search parameters or searching from somewhere near more locations registered on Yelp</p>
+                            <br>
+                        </div>
                         <mat-form-field class="full-width">
                             <input matInput [(ngModel)]="targetLocation" placeholder="Address">
                             <button mat-button *ngIf="targetLocation" matSuffix mat-icon-button
