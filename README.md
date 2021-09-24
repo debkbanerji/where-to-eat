@@ -1,5 +1,5 @@
 # Where to Eat
-The simple app for helping friends decide where to eat
+The smart app for helping friends decide where to eat
 
 ## Deployment instructions
 
