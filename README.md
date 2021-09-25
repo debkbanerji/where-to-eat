@@ -1,6 +1,11 @@
 # Where to Eat
 The smart app for helping friends decide where to eat
 
+[**wheretoeat.debkbanerji.com**](https://wheretoeat.debkbanerji.com)
+
+<sub>Note: loading can be slow if the server isn't warmed up, but refreshing the page usually resolves the page in a minute or two</dub>
+
+
 ## Deployment instructions
 
 In order to deploy the app, you will need a Yelp api key, obtainable by registering an application on the Yelp api console.
